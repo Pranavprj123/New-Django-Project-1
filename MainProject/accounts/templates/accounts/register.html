@@ -14,7 +14,7 @@
     <h1>Register Form</h1>
     <form action="" method="post">
         {% csrf_token %}
-        {% for field in forms %}
+        {% for field in form %}
         <p>
             {% if field.errors %}
             <ul class="errorlist">
@@ -23,10 +23,10 @@
                 {% endfor %}
             </ul>
             {% endif %}
-            {{ field.lablel_tag }} {{ field }}
+            {{ field.label_tag }} {{ field }}
         </p>
         {% endfor %}
-        <input type="submit" value="Login" />
+        <input type="submit" value="register" />
     </form>
 </body>
 </html>
