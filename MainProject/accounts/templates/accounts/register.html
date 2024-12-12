@@ -1,68 +1,33 @@
 {% extends 'base.html' %}
-    {% block style %}
-    
-    /* style.css */
-    form {
-        width: 600px;
-        margin: 0 auto;
-        padding: 20px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-    }
-    
-    p {
-        margin-bottom: 10px;
-    }
-    
-    .errorlist {
-        color: red;
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-    }
-    
-    input[type="text"],
-    input[type="password"],
-    input[type="email"],
-    input[type="date"],
-    textarea {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 3px;
-    }
-    
-    input[type="submit"] {
-        background-color: #4CAF50;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 3px;
-        cursor: pointer;
-    }
-    
-    input[type="submit"]:hover {
-        background-color: #3e8e41;
-    }
-        {% endblock %}
 
+    {% block style %}
+        .errorlist{
+            color:red
+        }
+    {% endblock %}
 
     {% block content %}
-    <h1 style="text-align: center;">Register Form</h1>
-    <form action="" method="post">
-        {% csrf_token %}
-        {% for field in form %}
-        <p>
-            {% if field.errors %}
-            <ul class="errorlist">
-                {% for error in field.errors %}
-                <li>{{ error }}</li>
+        <h1>Register Form</h1>
+        <form action="" method="post">
+            {% csrf_token %}
+            {% for field in form %}
+                <p>
+                    {% if field.errors %}
+                        <ul class="errorlist">
+                            {% for error in field.errors %}
+                                <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                        {{ field.label_tag }} {{ field }}
+                    </p>
                 {% endfor %}
-            </ul>
-            {% endif %}
-            {{ field.label_tag }} {{ field }}
-        </p>
-        {% endfor %}
-        <input type="submit" value="register" />
-    </form>
-{% endblock %}
+            <input type="submit" value="Register" />
+        </form>
+    {% endblock %}
+<!-- 
+<form action="">
+    <label for="fullname">FullName
+    </label>
+    <input type="text" id="fullname">
+</form> -->
