@@ -1,17 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register Form</title>
-    <style>
-        .errorlist{
-            color: red;
-        }
-    </style>
-</head>
-<body>
-    <h1>Register Form</h1>
+{% extends 'base.html' %}
+    {% block style %}
+    
+    /* style.css */
+    form {
+        width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    
+    p {
+        margin-bottom: 10px;
+    }
+    
+    .errorlist {
+        color: red;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="date"],
+    textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+    }
+    
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+    
+    input[type="submit"]:hover {
+        background-color: #3e8e41;
+    }
+        {% endblock %}
+
+
+    {% block content %}
+    <h1 style="text-align: center;">Register Form</h1>
     <form action="" method="post">
         {% csrf_token %}
         {% for field in form %}
@@ -28,5 +65,4 @@
         {% endfor %}
         <input type="submit" value="register" />
     </form>
-</body>
-</html>
+{% endblock %}

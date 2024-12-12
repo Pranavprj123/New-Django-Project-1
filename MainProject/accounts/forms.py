@@ -1,9 +1,14 @@
 from django import forms
 from .models import *
-class LoginForm(forms.ModelForm):
-    class Meta:
-        model = Contributor
-        fields = ['username','password']
+from django.contrib.auth.forms import UserCreationForm
+class LoginForm(forms.Form):
+    username = forms.CharField(max_length=20)
+    password = forms.CharField(max_length=20,widget=forms.PasswordInput(
+        attrs={
+            'placeholder':'Enter Password'
+        }
+    ))
+    
 
 class RegisterForm(forms.ModelForm):
     confirm_password = forms.CharField(max_length=40,widget=forms.PasswordInput(
